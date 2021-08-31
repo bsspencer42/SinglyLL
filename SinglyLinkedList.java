@@ -53,7 +53,21 @@ public class SinglyLinkedList<T> {
      */
     public void addToBack(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        return;
+        // Check for null data
+        if (data == null)
+            throw new IllegalArgumentException();
+        // Edge case #1 - Empty list
+        if (size == 0){
+            head = new SinglyLinkedListNode<T>(data);
+            tail = head;
+        }
+        // Create new node, point to head
+        else {
+            SinglyLinkedListNode<T> tempNode = new SinglyLinkedListNode<>(data);
+            tail.setNext(tempNode);
+            tail = tempNode;
+        }
+        size++;
     }
 
     /**
