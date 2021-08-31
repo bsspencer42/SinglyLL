@@ -3,6 +3,7 @@ import java.util.NoSuchElementException;
 /**
  * Your implementation of a Singly-Linked List.
  */
+
 public class SinglyLinkedList<T> {
 
     /*
@@ -26,6 +27,16 @@ public class SinglyLinkedList<T> {
      */
     public void addToFront(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        // Edge case #1 - Empty list
+        if (size == 0){
+            head = new SinglyLinkedListNode<T>(data);
+            tail = head;
+            size++;
+            return;
+        }
+        // Create new node, point to head
+        SinglyLinkedListNode<T> tempNode = new SinglyLinkedListNode<>(data,head);
+        head = tempNode;
     }
 
     /**
@@ -38,6 +49,7 @@ public class SinglyLinkedList<T> {
      */
     public void addToBack(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        return;
     }
 
     /**
@@ -50,6 +62,7 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromFront() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        return null;
     }
 
     /**
@@ -62,6 +75,7 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromBack() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        return null;
     }
 
     /**
