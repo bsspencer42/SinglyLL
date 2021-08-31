@@ -27,16 +27,20 @@ public class SinglyLinkedList<T> {
      */
     public void addToFront(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        // Check for null data
+        if (data == null)
+            throw new IllegalArgumentException();
         // Edge case #1 - Empty list
         if (size == 0){
             head = new SinglyLinkedListNode<T>(data);
             tail = head;
-            size++;
-            return;
         }
         // Create new node, point to head
-        SinglyLinkedListNode<T> tempNode = new SinglyLinkedListNode<>(data,head);
-        head = tempNode;
+        else {
+            SinglyLinkedListNode<T> tempNode = new SinglyLinkedListNode<>(data, head);
+            head = tempNode;
+        }
+        size++;
     }
 
     /**

@@ -1,7 +1,7 @@
 public class TestSLL {
     public static void main(String[] args) {
         SinglyLinkedList<Integer> mySLL = new SinglyLinkedList<>();
-        mySLL.addToFront(3);
+        mySLL.addToFront(null);
         mySLL.addToFront(2);
         mySLL.addToFront(1);
         printSLL(mySLL);
