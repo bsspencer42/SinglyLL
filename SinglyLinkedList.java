@@ -80,7 +80,23 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromFront() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        return null;
+        // Empty list case
+        if (size == 0){
+            throw new NoSuchElementException();
+        }
+        // Temp variable for removed data
+        T removeVal = head.getData();
+        // Single item edge case
+        if (size == 1){
+            head = null;
+            tail = null;
+        }
+        // Move pointer to head.next
+        else {
+            head = head.getNext();
+        }
+        size--;
+        return removeVal;
     }
 
     /**
@@ -93,7 +109,28 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromBack() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        return null;
+        // Empty list case
+        if (size == 0)
+            throw new NoSuchElementException();
+        SinglyLinkedListNode<T> currNode = head;
+        // Temp variable for return value
+        T removeVal;
+        // Single item edge case
+        if (size == 1){
+            removeVal = head.getData();
+            head = null;
+            tail = null;
+        }
+        else {
+            while (currNode.getNext().getNext() != null){
+                currNode = currNode.getNext();
+            }
+            removeVal = currNode.getNext().getData();
+            currNode.setNext(null);
+            tail = currNode;
+        }
+        size--;
+        return removeVal;
     }
 
     /**
