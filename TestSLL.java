@@ -11,7 +11,7 @@ public class TestSLL {
         printSLL(mySLL);
         mySLL.addToBack(4);
         printSLL(mySLL);
-        //System.out.println(mySLL.removeFromFront());
+        System.out.println(mySLL.removeFromFront());
         //System.out.println(mySLL.removeFromFront());
         System.out.println(mySLL.removeFromBack());
         System.out.println(mySLL.removeFromBack());
