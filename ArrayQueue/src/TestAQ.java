@@ -2,8 +2,13 @@ public class TestAQ {
     public static void main(String[] args) {
         ArrayQueue<Integer> myAQ = new ArrayQueue<>();
         myAQ.enqueue(1);
+        myAQ.printBA();
+        myAQ.dequeue();
+        myAQ.printBA();
         myAQ.enqueue(2);
+        myAQ.printBA();
         myAQ.enqueue(3);
+        myAQ.printBA();
         myAQ.enqueue(4);
         myAQ.enqueue(5);
         myAQ.enqueue(6);
@@ -16,5 +21,13 @@ public class TestAQ {
         myAQ.printBA();
         myAQ.enqueue(10);
         myAQ.printBA();
+        myAQ.enqueue(11);
+        myAQ.printBA();
+        myAQ.dequeue();
+        myAQ.printBA();
+        myAQ.enqueue(12);
+        myAQ.enqueue(13);
+        myAQ.printBA();
+
     }
 }

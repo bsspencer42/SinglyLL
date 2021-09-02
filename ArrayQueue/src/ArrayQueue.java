@@ -48,16 +48,11 @@ public class ArrayQueue<T> {
         if (data == null)
             throw new IllegalArgumentException();
         // Empty array condition
-        if (size == 0){
-            backingArray[0] = data;
-        }
-        else{
-            // Resize array is necessary
-            if (size == backingArray.length)
-                resizeBackingArray();
-            // Add data to end using mod to wrap around
-            backingArray[(front+size) % backingArray.length] = data;
-        }
+        // Resize array is necessary
+        if (size == backingArray.length)
+            resizeBackingArray();
+        // Add data to end using mod to wrap around
+        backingArray[(front+size) % backingArray.length] = data;
         size++;
     }
 
