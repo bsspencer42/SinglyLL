@@ -39,13 +39,13 @@ public class BST<T extends Comparable<? super T>> {
             throw new IllegalArgumentException();
         // Call wrapper method
         root = innerAdd(data, root);
-        size++;
     }
 
     private BSTNode<T> innerAdd(T data, BSTNode<T> currNode) {
         // Create new node if null
         if (currNode == null) {
             currNode = new BSTNode<T>(data);
+            size++;
             System.out.println(currNode.getData());
         }
         // Recurse left if currNode > data
