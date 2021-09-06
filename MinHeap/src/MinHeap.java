@@ -56,8 +56,20 @@ public class MinHeap<T extends Comparable<? super T>> {
         backingArray[size+1] = data;
         size++;
 
-        // DownHeap
-
+        // DownHeap - Recursive
+        downHeap(size);
+    }
+    private void downHeap(int index){
+        // Base Case - Top Node
+        if (index / 2 == 0){
+            return;
+        }
+        if (backingArray[index].compareTo(backingArray[index/2]) < 0){
+            T temp = backingArray[index/2];
+            backingArray[index/2] = backingArray[index];
+            backingArray[index] = temp;
+        }
+        downHeap(index/2);
     }
 
     /**
@@ -103,7 +115,7 @@ public class MinHeap<T extends Comparable<? super T>> {
     public void printArray(){
         System.out.print("Array: [");
         for (int i = 1; i < size+1;i++) {
-            System.out.print(i);
+            System.out.print(backingArray[i]);
             if (i != size)
                 System.out.print(", ");
         }

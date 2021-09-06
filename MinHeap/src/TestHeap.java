@@ -1,8 +1,10 @@
 public class TestHeap {
     public static void main(String[] args) {
         MinHeap<Integer> heap = new MinHeap<>();
-        heap.add(1);
-        heap.add(2);
+        for (int i = 1; i < 10;i++)
+            heap.add(i);
+        heap.printArray();
+        heap.add(0);
         heap.printArray();
     }
 }
