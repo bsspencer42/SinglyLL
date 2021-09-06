@@ -57,9 +57,10 @@ public class MinHeap<T extends Comparable<? super T>> {
         size++;
 
         // DownHeap - Recursive
-        downHeap(size);
+        upHeap(size);
     }
-    private void downHeap(int index){
+
+    private void upHeap(int index){
         // Base Case - Top Node
         if (index / 2 == 0){
             return;
@@ -69,7 +70,7 @@ public class MinHeap<T extends Comparable<? super T>> {
             backingArray[index/2] = backingArray[index];
             backingArray[index] = temp;
         }
-        downHeap(index/2);
+        upHeap(index/2);
     }
 
     /**
@@ -84,7 +85,46 @@ public class MinHeap<T extends Comparable<? super T>> {
      */
     public T remove() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        return null;
+        // Case - No data
+        if (size == 0)
+            throw new NoSuchElementException();
+
+        // Perform swap
+            // Save removed value to return
+        T result = backingArray[1];
+            // Swap final element to begin
+        backingArray[1] = backingArray[size];
+            // Set swapped element to null & decrement size
+        backingArray[size] = null;
+        size--;
+
+        // DownHeap
+        downHeap(1);
+
+        // Return result
+        return result;
+    }
+
+    private void downHeap(int index){
+        // Base Case - Leaf node
+        if (index > size / 2)
+            return;
+
+        // Make comparison and swap
+        int compIndex = index*2;
+            // Decide which child is smaller and compare
+        if (backingArray[index*2+1] != null && backingArray[index*2].compareTo(backingArray[index*2+1]) > 0){
+            compIndex+=1;
+        }
+            // Compare to child & swap if less than child
+        if (backingArray[index].compareTo(backingArray[compIndex]) > 0){
+            T temp = backingArray[index];
+            backingArray[index] = backingArray[compIndex];
+            backingArray[compIndex] = temp;
+        }
+
+        // Recurse down
+        downHeap(compIndex);
     }
 
     /**
