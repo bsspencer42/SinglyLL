@@ -160,7 +160,7 @@ public class ExternalChainingHashMap<K, V> {
 
     private V searchIndex(K key,V value, ExternalChainingMapEntry<K,V> indexPos){
         // Not Found Case
-        if (indexPos.getValue() == null)
+        if (indexPos == null)
             return null;
         // Found Case
         else if (indexPos.getKey().equals(key)){
@@ -176,5 +176,25 @@ public class ExternalChainingHashMap<K, V> {
         }
     }
 
+    public void printVals(){
+        String myIndex = "[";
+        String myKeys = "[";
+        for (int x = 0; x < table.length;x++){
+            myKeys += "(" + recurseIndex(table[x]).trim() + ")";
+            myIndex += x;
+            if (x < table.length-1){
+                myKeys += ", ";
+                myIndex += ", ";
+            }
+        }
+        System.out.println(myKeys);
+        System.out.println(myIndex);
+    }
+    public String recurseIndex(ExternalChainingMapEntry<K,V> index){
+        if (index == null){
+            return "";
+        }
+        return index.getKey() + " " + recurseIndex(index.getNext());
+    }
 
 }
