@@ -44,7 +44,7 @@ public class MinHeap<T extends Comparable<? super T>> {
         if (data == null)
             throw new IllegalArgumentException();
         // Resize
-        if (backingArray.length == size){
+        if (backingArray.length == size+1){
             T[] temp = (T[]) new Comparable[backingArray.length*2];
             for (int i = 1;i < backingArray.length;i++){
                 temp[i] = backingArray[i];
