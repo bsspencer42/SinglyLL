@@ -71,6 +71,30 @@ public class ExternalChainingHashMap<K, V> {
      */
     public V put(K key, V value) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        // Invalid argument
+        if (key == null || value == null)
+            throw new IllegalArgumentException();
+        // Get hashCode
+        int hashCode = Math.abs(key.hashCode() % table.length);
+
+        // Check if key in table and add if necessary
+        V searchVal = searchIndex(key,value, table[hashCode]);
+        // Found Case - Return replaced value
+        if (searchVal != null) {
+            return searchVal;
+        }
+        // Add new entry at index
+        else {
+            // Resize if necessary
+            if ((size + 1.0) / table.length > MAX_LOAD_FACTOR){
+                resizeBackingTable(2*table.length+1);
+                put(key,value);
+            }
+            else {
+                table[hashCode] = new ExternalChainingMapEntry<K,V>(key,value,table[hashCode]);
+            }
+            return null;
+        }
     }
 
     /**
@@ -105,6 +129,7 @@ public class ExternalChainingHashMap<K, V> {
      */
     private void resizeBackingTable(int length) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        return;
     }
 
     /**
@@ -132,4 +157,24 @@ public class ExternalChainingHashMap<K, V> {
         // DO NOT MODIFY THIS METHOD!
         return size;
     }
+
+    private V searchIndex(K key,V value, ExternalChainingMapEntry<K,V> indexPos){
+        // Not Found Case
+        if (indexPos.getValue() == null)
+            return null;
+        // Found Case
+        else if (indexPos.getKey().equals(key)){
+            System.out.println("Exists!");
+            // Save old value and overwrite
+            V returnVal = indexPos.getValue();
+            indexPos.setValue(value);
+            return returnVal;
+        }
+        // Continue Recursion
+        else {
+            return searchIndex(key,value, indexPos.getNext());
+        }
+    }
+
+
 }
