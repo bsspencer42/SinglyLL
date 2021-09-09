@@ -76,7 +76,6 @@ public class ExternalChainingHashMap<K, V> {
             throw new IllegalArgumentException();
         // Get hashCode
         int hashCode = Math.abs(key.hashCode() % table.length);
-
         // Check if key in table and add if necessary
         V searchVal = searchIndex(key,value, table[hashCode]);
         // Found Case - Return replaced value
@@ -92,6 +91,7 @@ public class ExternalChainingHashMap<K, V> {
             }
             else {
                 table[hashCode] = new ExternalChainingMapEntry<K,V>(key,value,table[hashCode]);
+                size++;
             }
             return null;
         }
@@ -129,7 +129,18 @@ public class ExternalChainingHashMap<K, V> {
      */
     private void resizeBackingTable(int length) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        return;
+        // Create new table
+        ExternalChainingMapEntry<K, V>[] temp = table;
+        table = (ExternalChainingMapEntry<K, V>[]) new ExternalChainingMapEntry[length];
+        size = 0;
+        // Add all values
+        for (int i = 0; i < temp.length;i++){
+            ExternalChainingMapEntry<K,V> curVal = temp[i];
+            while (curVal != null){
+                put(curVal.getKey(),curVal.getValue());
+                curVal = curVal.getNext();
+            }
+        }
     }
 
     /**
@@ -158,6 +169,7 @@ public class ExternalChainingHashMap<K, V> {
         return size;
     }
 
+    // Helper Methods
     private V searchIndex(K key,V value, ExternalChainingMapEntry<K,V> indexPos){
         // Not Found Case
         if (indexPos == null)
@@ -175,7 +187,6 @@ public class ExternalChainingHashMap<K, V> {
             return searchIndex(key,value, indexPos.getNext());
         }
     }
-
     public void printVals(){
         String myIndex = "[";
         String myKeys = "[";
@@ -189,12 +200,12 @@ public class ExternalChainingHashMap<K, V> {
         }
         System.out.println(myKeys);
         System.out.println(myIndex);
+        System.out.println(size);
     }
-    public String recurseIndex(ExternalChainingMapEntry<K,V> index){
+    private String recurseIndex(ExternalChainingMapEntry<K,V> index){
         if (index == null){
             return "";
         }
         return index.getKey() + " " + recurseIndex(index.getNext());
     }
-
 }

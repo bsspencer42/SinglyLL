@@ -1,16 +1,21 @@
 public class TestHash {
     public static void main(String[] args) {
         ExternalChainingHashMap<String,Integer> table = new ExternalChainingHashMap<>();
-        System.out.println(table.put("test",1));
+        System.out.println(table.put("testy",1));
         table.put("Yanel",32);
         table.put("Brad", 31);
         table.put("Paige",29);
         table.put("Ivan",30);
         table.put("Randy",55);
         table.put("Lani",60);
-        table.put("Tanner",30);
-        table.put("Catboy",20);
-        table.put()
+        table.put("Tanner",30); // 8
         table.printVals();
+        table.put("Catboy",20); // 9
+        table.printVals();
+        table.put("Zeke", 4); // 10
+        table.printVals();
+        table.put("Zeke",5);
+        table.printVals();
+        System.out.println(table.getTable());
     }
 }
