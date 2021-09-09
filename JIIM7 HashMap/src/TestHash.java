@@ -1,6 +1,7 @@
 public class TestHash {
     public static void main(String[] args) {
-        ExternalChainingHashMap<String,Integer> table = new ExternalChainingHashMap<>();
+        //ExternalChainingHashMap<String,Integer> table = new ExternalChainingHashMap<>();
+        /*
         table.put("testy",1);
         table.put("Yanel",32);
         table.put("Brad", 31);
@@ -17,5 +18,13 @@ public class TestHash {
         table.put("Zeke",5);
         table.printVals();
         System.out.println(table.getTable());
+         */
+        ExternalChainingHashMap<Integer,Integer> table2 = new ExternalChainingHashMap<>();
+        table2.put(19,19);
+        table2.put(6,6);
+        table2.put(32,32);
+        table2.put(8,8);
+        table2.put(19,18);
+        table2.printVals();
     }
 }

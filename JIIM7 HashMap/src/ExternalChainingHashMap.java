@@ -208,6 +208,6 @@ public class ExternalChainingHashMap<K, V> {
         if (index == null){
             return "";
         }
-        return index.getKey() + " " + recurseIndex(index.getNext());
+        return index.getKey() + "," + index.getValue() + " " + recurseIndex(index.getNext());
     }
 }
