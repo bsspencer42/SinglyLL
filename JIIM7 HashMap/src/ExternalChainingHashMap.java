@@ -198,6 +198,8 @@ public class ExternalChainingHashMap<K, V> {
                 myIndex += ", ";
             }
         }
+        myKeys += "]";
+        myIndex += "]";
         System.out.println(myKeys);
         System.out.println(myIndex);
         System.out.println(size);

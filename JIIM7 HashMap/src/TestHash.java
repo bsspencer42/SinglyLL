@@ -1,7 +1,7 @@
 public class TestHash {
     public static void main(String[] args) {
         ExternalChainingHashMap<String,Integer> table = new ExternalChainingHashMap<>();
-        System.out.println(table.put("testy",1));
+        table.put("testy",1);
         table.put("Yanel",32);
         table.put("Brad", 31);
         table.put("Paige",29);
