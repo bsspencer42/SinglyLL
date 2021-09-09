@@ -24,7 +24,9 @@ public class TestHash {
         table2.put(6,6);
         table2.put(32,32);
         table2.put(8,8);
-        table2.put(19,18);
+        table2.put(19,19);
+        table2.printVals();
+        System.out.println(table2.remove(19));
         table2.printVals();
     }
 }

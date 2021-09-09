@@ -107,7 +107,34 @@ public class ExternalChainingHashMap<K, V> {
      */
     public V remove(K key) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        return null;
+        if (key == null)
+            throw new IllegalArgumentException();
+        //Get HashCode
+        int hashCode = Math.abs(key.hashCode() % table.length);
+        // Search for key
+        ExternalChainingMapEntry<K,V> curVal = table[hashCode];
+        ExternalChainingMapEntry<K,V> prevVal = null;
+        while (curVal != null){
+            // If match
+            if (curVal.getKey().equals(key)){
+                // If only value
+                if (prevVal == null){
+                    table[hashCode] = curVal.getNext();
+                }
+                // If other than first value
+                else {
+                    prevVal.setNext(curVal.getNext());
+                }
+                size--;
+                 return curVal.getValue();
+            }
+            // If not at current index
+            else {
+                prevVal = curVal;
+                curVal = curVal.getNext();
+            }
+        }
+        throw new NoSuchElementException();
     }
 
     /**
